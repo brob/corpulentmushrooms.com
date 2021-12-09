@@ -1,0 +1,13 @@
+<div class="mushroom">
+    <div class="cap">
+        <div class="spot"></div>
+    </div>
+    <div class="stem"></div>
+</div>
+
+{% if eleventy.serverless.query.fgcolor %}
+    <a href="/mushroom/saved/{{ eleventy.serverless.query.bgcolor }}/{{ eleventy.serverless.query.fgcolor }}/">
+        Link to mushroom with {{ eleventy.serverless.query.fgcolor }} spots and {{ eleventy.serverless.query.bgcolor }} cap
+    </a>
+{% endif %}
+

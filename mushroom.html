@@ -1,0 +1,32 @@
+---js
+{
+    "layout": "base.html",
+    "permalink": {
+        "build": "/mushroom/",
+        "mushroom": "/mushroom/",
+        "saved": "/mushroom/saved/:bgcolor/:fgcolor/"
+    },
+    eleventyComputed: {
+        "bgColor": data =>  data.eleventy?.serverless?.path?.bgcolor || data.eleventy?.serverless?.query?.bgcolor,
+        "fgColor": data => data.eleventy?.serverless?.path?.fgcolor || data.eleventy?.serverless?.query?.fgcolor,
+        "sharePath": data => `/mushroom/saved/${data.bgColor}/${data.fgColor}/`
+    }
+
+
+}
+---
+<h1>You created a mushroom with {{ fgColor }} spots and {{ bgColor }} cap</h1>
+<h2>Share this with your friends: <a href="{{ sharePath }}">{{sharePath}}</a></h2>
+<style>
+    .cap {
+        background-color: {{ bgColor }};
+    }
+    .spot {
+        background-color: {{ fgColor }};
+    }
+</style>
+<div class="app-container">
+    {% include "mushroom.html" %}
+
+    {% include "form.html" %}
+</div>

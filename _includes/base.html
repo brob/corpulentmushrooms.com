@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Corpulent Mushrooms</title>
+    <link rel="stylesheet" href="https://unpkg.com/open-props"/>
+    <link rel="stylesheet" href="https://unpkg.com/open-props/normalize.min.css"/>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            width:98vw;
+            max-width: 960px;
+            margin: 0 auto;
+        }
+        .mushroom {
+            max-width: 400px;
+            position:relative;
+        }
+        .spot {
+            background-color: #f0f0f0;
+            border-radius: 50%;
+            width: 50px;
+            position: absolute;
+            height: 50px;
+            left: 50%;
+            top: 50%;
+            transform: translateX(-50%) translateY(-50%);
+        }
+        .cap {
+            background-color: pink;
+            border-radius: 50% 50% 0 0;
+            padding: 10px;
+            margin: 10px;
+            min-height: 160px;
+            position: relative;
+            z-index: 100;
+        }
+        .stem {
+            background-color: #ccc;
+            min-height: 160px;
+            position: relative;
+            left: 50%;
+            height: 50px;
+            width: 130px;
+            top: -20px;
+            z-index: 1;
+            transform: translateX(-50%);    
+        }
+        .app-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            justify-content: start;
+            gap: 1rem;
+        }
+        label {
+            display: block;
+            margin-bottom: .5rem;
+        }
+        input {
+            border: 1px solid #333;
+            border-radius: var(--radius-2)
+        }
+        button {
+
+            display: inline-flex;
+            white-space: nowrap;
+            
+            font-size: var(--font-size-fluid-1);
+            font-weight: var(--font-weight-7);
+            
+            padding-inline: var(--size-6);
+            padding-block: var(--size-3);
+
+            color: var(--blue-9);
+            border: var(--border-size-2) solid var(--blue-5);
+            background-color: transparent;
+            border-radius: var(--radius-2);
+        }
+    </style>
+
+</head>
+<body>
+<div class="container">
+
+
+    {{ content }}
+
+</div>
+
+</body>
+</html>

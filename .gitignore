@@ -1,0 +1,9 @@
+node_modules
+_site
+
+
+netlify/functions/mushroom/**
+!netlify/functions/mushroom/index.js
+
+netlify/functions/saved/**
+!netlify/functions/saved/index.js
