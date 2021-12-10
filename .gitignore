@@ -7,3 +7,5 @@ netlify/functions/mushroom/**
 
 netlify/functions/saved/**
 !netlify/functions/saved/index.js
+# Local Netlify folder
+.netlify

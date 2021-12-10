@@ -11,8 +11,6 @@
         "fgColor": data => data.eleventy?.serverless?.path?.fgcolor || data.eleventy?.serverless?.query?.fgcolor,
         "sharePath": data => `/mushroom/saved/${data.bgColor}/${data.fgColor}/`
     }
-
-
 }
 ---
 <h1>You created a mushroom with {{ fgColor }} spots and {{ bgColor }} cap</h1>
