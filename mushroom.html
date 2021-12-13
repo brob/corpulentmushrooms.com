@@ -6,7 +6,7 @@
         "mushroom": "/mushroom/",
         "saved": "/mushroom/saved/:bgcolor/:fgcolor/"
     },
-    eleventyComputed: {
+    "eleventyComputed": {
         "bgColor": data =>  data.eleventy?.serverless?.path?.bgcolor || data.eleventy?.serverless?.query?.bgcolor,
         "fgColor": data => data.eleventy?.serverless?.path?.fgcolor || data.eleventy?.serverless?.query?.fgcolor,
         "sharePath": data => `/mushroom/saved/${data.bgColor}/${data.fgColor}/`
