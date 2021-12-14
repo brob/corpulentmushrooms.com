@@ -4,7 +4,7 @@
     "permalink": {
         "build": "/mushroom/",
         "mushroom": "/mushroom/",
-        "saved": "/mushroom/saved/:bgcolor/:fgcolor/"
+        "saved": "/mushroom/saved/:bgcolor/:fgcolor/:shape/"
     },
     "eleventyComputed": {
         "mushroom": data => {
@@ -18,7 +18,7 @@
         },
         "sharePath": data => {
             if (data.eleventy.serverless) {
-                return `/mushroom/saved/${data.mushroom.bgColor}/${data.mushroom.fgColor}/${data.mushroom.shape}/`}
+                return `/mushroom/saved/${encodeURIComponent(data.mushroom.bgColor)}/${encodeURIComponent(data.mushroom.fgColor)}/${data.mushroom.shape}/`}
             }
         }
 }

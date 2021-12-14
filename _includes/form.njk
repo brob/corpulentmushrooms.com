@@ -1,0 +1,21 @@
+<form action="/mushroom/" class="colors">
+    <h4 style="text-align: inline-end;">Make your mushroom</h4>
+    <label for="bgcolor">Cap Background * 
+        <input required value="{{mushroom.bgColor}}" type="color" name="bgcolor">
+    </label>
+    <label for="bgcolor">Cap Spot Color * 
+        <input required value="{{mushroom.fgColor}}" type="color" name="fgcolor">
+    </label>
+    <label for="shape">Cap Shape 
+        <select value="{{mushroom.shape}}" name="shape">
+            <option value="1">Select a shape</option>
+
+            {% assign options = '1,2,3,4,5' | split:',' %}
+            {% for option in options %}
+                <option {% if option == mushroom.shape %}selected{% endif %} value="{{option}}">Shape {{option}}</option>
+
+            {% endfor %}
+        </select>
+    </label>
+    <button type="submit">Make my mushroom</button>
+</form>

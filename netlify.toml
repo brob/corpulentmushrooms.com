@@ -1,5 +1,5 @@
 [[redirects]]
-from = "/mushroom/saved/:bgcolor/:fgcolor/"
+from = "/mushroom/saved/:bgcolor/:fgcolor/:shape/"
 to = "/.netlify/functions/saved"
 status = 200
 force = true
