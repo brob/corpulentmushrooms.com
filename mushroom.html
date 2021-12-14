@@ -11,13 +11,14 @@
             if (data.eleventy.serverless) {
                 return {
                     "bgColor": (Object.keys(data.eleventy.serverless.path).length > 0) ? data.eleventy.serverless.path.bgcolor : data.eleventy.serverless.query.bgcolor,
-                    "fgColor": (Object.keys(data.eleventy.serverless.path).length > 0) ? data.eleventy.serverless.path.fgcolor : data.eleventy.serverless.query.fgcolor
+                    "fgColor": (Object.keys(data.eleventy.serverless.path).length > 0) ? data.eleventy.serverless.path.fgcolor : data.eleventy.serverless.query.fgcolor,
+                    "shape":   (Object.keys(data.eleventy.serverless.path).length > 0) ? data.eleventy.serverless.path.shape : data.eleventy.serverless.query.shape
                 }
             }
         },
         "sharePath": data => {
             if (data.eleventy.serverless) {
-                return `/mushroom/saved/${data.mushroom.bgColor}/${data.mushroom.fgColor}/`}
+                return `/mushroom/saved/${data.mushroom.bgColor}/${data.mushroom.fgColor}/${data.mushroom.shape}/`}
             }
         }
 }
@@ -29,6 +30,7 @@
 <style>
     .cap {
         background-color: {{ mushroom.bgColor }};
+        border-radius: var(--radius-blob-{{mushroom.shape}})
     }
     .spot {
         background-color: {{ mushroom.fgColor }};
@@ -37,5 +39,5 @@
 <div class="app-container">
     {% include "mushroom.html" %}
 
-    {% include "form.html" %}
+    {% include "form.njk" %}
 </div>
