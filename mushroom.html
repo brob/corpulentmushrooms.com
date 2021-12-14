@@ -22,11 +22,7 @@
         }
 }
 ---
-<h3>
-    fg: {{ mushroom.fgColor }} {{eleventy.serverless.query.fgcolor }}
-    bg: {{ mushroom.bgColor }}
-</h3>
-{{ eleventy.serverless |json }}
+
 <h1>You created a mushroom with {{ mushroom.fgColor }} spots and {{ mushroom.bgColor }} cap</h1>
 <h2>Share this with your friends: <a href="{{ sharePath }}">{{sharePath}}</a></h2>
 
