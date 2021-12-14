@@ -5,9 +5,9 @@
     <div class="stem"></div>
 </div>
 
-{% if eleventy.serverless.query.fgcolor %}
-    <a href="/mushroom/saved/{{ eleventy.serverless.query.bgcolor }}/{{ eleventy.serverless.query.fgcolor }}/">
-        Link to mushroom with {{ eleventy.serverless.query.fgcolor }} spots and {{ eleventy.serverless.query.bgcolor }} cap
+{% if sharePath %}
+    <a href="{{ sharePath }}">
+        Link to mushroom with {{ mushroom.fgColor }} spots and {{ mushroom.bgColor }} cap
     </a>
 {% endif %}
 

@@ -7,28 +7,35 @@
         "saved": "/mushroom/saved/:bgcolor/:fgcolor/"
     },
     "eleventyComputed": {
-        "bgColor": data => {
+        "mushroom": data => {
             if (data.eleventy.serverless) {
-                return (data.eleventy.serverless.path ? data.eleventy.serverless.path.bgcolor : data.eleventy.serverless.query.bgcolor);
+                return {
+                    "bgColor": (Object.keys(data.eleventy.serverless.path).length > 0) ? data.eleventy.serverless.path.bgcolor : data.eleventy.serverless.query.bgcolor,
+                    "fgColor": (Object.keys(data.eleventy.serverless.path).length > 0) ? data.eleventy.serverless.path.fgcolor : data.eleventy.serverless.query.fgcolor
+                }
             }
         },
-        "fgColor": data => {
+        "sharePath": data => {
             if (data.eleventy.serverless) {
-                return (data.eleventy.serverless.path ? data.eleventy.serverless.path.fgcolor : data.eleventy.serverless.query.fgcolor);
+                return `/mushroom/saved/${data.mushroom.bgColor}/${data.mushroom.fgColor}/`}
             }
-        },
-        "sharePath": data => `/mushroom/saved/${data.bgColor}/${data.fgColor}/`
-    }
+        }
 }
 ---
-<h1>You created a mushroom with {{ fgColor }} spots and {{ bgColor }} cap</h1>
+<h3>
+    fg: {{ mushroom.fgColor }} {{eleventy.serverless.query.fgcolor }}
+    bg: {{ mushroom.bgColor }}
+</h3>
+{{ eleventy.serverless |json }}
+<h1>You created a mushroom with {{ mushroom.fgColor }} spots and {{ mushroom.bgColor }} cap</h1>
 <h2>Share this with your friends: <a href="{{ sharePath }}">{{sharePath}}</a></h2>
+
 <style>
     .cap {
-        background-color: {{ bgColor }};
+        background-color: {{ mushroom.bgColor }};
     }
     .spot {
-        background-color: {{ fgColor }};
+        background-color: {{ mushroom.fgColor }};
     }
 </style>
 <div class="app-container">
