@@ -13,7 +13,7 @@ force = true
 _generated_by_eleventy_serverless = "mushroom"
 
 [context.production]
-  command = "eleventy"
+command = "eleventy"
 
 [context.deploy-preview]
-  command = "npx slinkity"
+command = "npx slinkity"
