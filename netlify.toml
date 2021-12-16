@@ -11,3 +11,9 @@ to = "/.netlify/functions/mushroom"
 status = 200
 force = true
 _generated_by_eleventy_serverless = "mushroom"
+
+[context.production]
+command = "npx slinkity"
+
+[context.deploy-preview]
+command = "npx slinkity"
