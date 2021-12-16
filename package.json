@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "npx slinkity --serve --incremental",
-    "build": "eleventy",
+    "build": "npx slinkity",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
