@@ -5,35 +5,31 @@
         "build": "/mushroom/",
         "mushroom": "/mushroom/",
         "saved": "/mushroom/saved/:bgcolor/:fgcolor/:shape/"
-    },
-    "eleventyComputed": {
-        "mushroom": data => {
-            if (data.eleventy.serverless) {
-                return {
-                    "bgColor": (Object.keys(data.eleventy.serverless.path).length > 0) ? data.eleventy.serverless.path.bgcolor : data.eleventy.serverless.query.bgcolor,
-                    "fgColor": (Object.keys(data.eleventy.serverless.path).length > 0) ? data.eleventy.serverless.path.fgcolor : data.eleventy.serverless.query.fgcolor,
-                    "shape":   (Object.keys(data.eleventy.serverless.path).length > 0) ? data.eleventy.serverless.path.shape : data.eleventy.serverless.query.shape
-                }
-            }
-        },
-        "sharePath": data => {
-            if (data.eleventy.serverless) {
-                return `/mushroom/saved/${encodeURIComponent(data.mushroom.bgColor)}/${encodeURIComponent(data.mushroom.fgColor)}/${data.mushroom.shape}/`}
-            }
-        }
+    }
 }
 ---
+{% if eleventy.serverless.path.bgcolor %}
+    {% assign bgColor = eleventy.serverless.path.bgcolor %}
+    {% assign fgColor = eleventy.serverless.path.fgcolor %}
+    {% assign shape = eleventy.serverless.path.shape %}
+{% elsif eleventy.serverless.query.bgcolor %}
+    {% assign bgColor = eleventy.serverless.query.bgcolor | slice: 1,7 %}
+    {% assign fgColor = eleventy.serverless.query.fgcolor | slice: 1,7 %}
+    {% assign shape = eleventy.serverless.query.shape %}
+{% endif %}
+{% capture sharePath %}/mushroom/saved/{{ bgColor }}/{{ fgColor }}/{{ shape }}/{% endcapture %}
 
-<h1>You created a mushroom with {{ mushroom.fgColor }} spots and {{ mushroom.bgColor }} cap</h1>
-<h2>Share this with your friends: <a href="{{ sharePath }}">{{sharePath}}</a></h2>
+
+<h1>You created a mushroom with #{{ fgColor }} spots and #{{ bgColor }} cap</h1>
+<h2><a href="{{ sharePath }}">Share this with your friends: {{sharePath}}</a></h2>
 
 <style>
     .cap {
-        background-color: {{ mushroom.bgColor }};
-        border-radius: var(--radius-blob-{{mushroom.shape}})
+        background-color: #{{ bgColor }};
+        border-radius: var(--radius-blob-{{shape}})
     }
     .spot {
-        background-color: {{ mushroom.fgColor }};
+        background-color: #{{ fgColor }};
     }
 </style>
 <div class="app-container">
